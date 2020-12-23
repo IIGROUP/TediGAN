@@ -5,7 +5,7 @@
 
 Implementation of *TediGAN: Text-Guided Diverse Image Generation and Manipulation* in PyTorch.
 
-## [Preprint](https://arxiv.org/abs/2012.03308) | [Video](https://youtu.be/L8Na2f5viAM) | [Project](https://xiaweihao.com/projects/tedigan/)
+## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM)
 
 <p align="center">
 <img src="/asserts/teaser.jpg"/>
@@ -14,6 +14,8 @@ Implementation of *TediGAN: Text-Guided Diverse Image Generation and Manipulatio
 Official repository for the paper W. Xia, Y. Yang, J.-H. Xue, and B. Wu. "Text-Guided Diverse Image Generation and Manipulation". 
 
 Contact: weihaox AT outlook.com
+
+> **NOTE**: The results reported in the paper are about [[faces](https://github.com/weihaox/Multi-Modal-CelebA-HQ)]. We are currently experimenting on other datasets. The codebase includes stylegan training, stylegan inversion, and visual-linguistic learning. The codes will be released when we finish the corresponding training on the new datasets.
 
 ## TediGAN Framework
 
