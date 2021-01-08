@@ -1,7 +1,8 @@
 # TediGAN
+
 [![Paper](http://img.shields.io/badge/paper-arxiv.2010.04513-green.svg)](https://arxiv.org/abs/2012.03308)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/made%20with-python-green.svg?style=flat-square)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/made%20with-python-green.svg?style=flat)](https://www.python.org/)
 
 Implementation of *TediGAN: Text-Guided Diverse Image Generation and Manipulation* in PyTorch.
 
@@ -49,13 +50,23 @@ WORK_DIR=work_dirs/stylegan_lsun_bird256_train
 
 Or you can directly use a pretrained StyleGAN generator for [ffhq_face_1024](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155082926_link_cuhk_edu_hk/EdfMxgb0hU9BoXwiR3dqYDEBowCSEF1IcsW3n4kwfoZ9OQ?e=VwIV58&download=1), [ffhq_face_256](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155082926_link_cuhk_edu_hk/ES-NAUCC2qdHg87BftvlBiQBVpbJ8-005Q4TNr5KrOxQEw?e=00AnWt&download=1), [cub_bird_256](), or [lsun_bird_256]().
 
-#### Train the Image Encoder
+#### Invert StyleGAN
 
-TBD
+This step is to find the matching latent codes of given images in the latent space of a pretrained GAN model, *e.g.* StyleGAN or StyleGAN2 (should be the same model in the former step). We will include the inverted codes in our [Multi-Modal-CelebA-HQ](https://github.com/weihaox/Multi-Modal-CelebA-HQ) Dataset, which are inverted using [idinvert](https://github.com/genforce/idinvert_pytorch).
+
+Our original method is based on [idinvert](https://github.com/genforce/idinvert_pytorch) (including StyleGAN training and GAN inversion). To generate 1024 resolution images and show the scalability of our framework, we also learn the visual-linguistic similarity based on [pSp](https://github.com/eladrich/pixel2style2pixel).
+
+Due to the scalability of our framework, there are two general ways to invert a pretrained StyleGAN. 
+
+- Train an image encoder like in [idinvert](https://github.com/genforce/idinvert_pytorch) or other [GAN inversion methods](https://github.com/weihaox/awesome-image-translation/blob/master/awesome-gan-inversion.md).
+
+- Project images to latent space like in [StyleGAN2Ada](https://github.com/NVlabs/stylegan2-ada#projecting-images-to-latent-space).
 
 #### Train the Text Encoder
 
-TBD
+`
+python train_vls.py
+`
 
 ### More Results
 
