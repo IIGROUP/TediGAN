@@ -1,4 +1,4 @@
-# TediGAN
+# # <p align=center>`TediGAN`</p>
 
 [![Paper](http://img.shields.io/badge/paper-arxiv.2010.04513-green.svg)](https://arxiv.org/abs/2012.03308)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
