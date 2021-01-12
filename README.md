@@ -1,4 +1,4 @@
-# # <p align=center>`TediGAN`</p>
+# <p align=center>`TediGAN`</p>
 
 [![Paper](http://img.shields.io/badge/paper-arxiv.2010.04513-green.svg)](https://arxiv.org/abs/2012.03308)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
@@ -52,7 +52,7 @@ Or you can directly use a pretrained StyleGAN generator for [ffhq_face_1024](htt
 
 #### Invert StyleGAN
 
-This step is to find the matching latent codes of given images in the latent space of a pretrained GAN model, *e.g.* StyleGAN or StyleGAN2 (should be the same model in the former step). We will include the inverted codes in our [Multi-Modal-CelebA-HQ](https://github.com/weihaox/Multi-Modal-CelebA-HQ) Dataset, which are inverted using [idinvert](https://github.com/genforce/idinvert_pytorch).
+This step is to find the matching latent codes of given images in the latent space of a pretrained GAN model, *e.g.* StyleGAN or StyleGAN2 (should be the same model in the former step). We ~~will include~~ have included the inverted codes in our [Multi-Modal-CelebA-HQ](https://github.com/weihaox/Multi-Modal-CelebA-HQ) Dataset, which are inverted using [idinvert](https://github.com/genforce/idinvert_pytorch).
 
 Our original method is based on [idinvert](https://github.com/genforce/idinvert_pytorch) (including StyleGAN training and GAN inversion). To generate 1024 resolution images and show the scalability of our framework, we also learn the visual-linguistic similarity based on [pSp](https://github.com/eladrich/pixel2style2pixel).
 
