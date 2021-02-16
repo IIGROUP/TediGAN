@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/made%20with-python-green.svg?style=flat)](https://www.python.org/)
 
-Implementation of *TediGAN: Text-Guided Diverse Image Generation and Manipulation* in PyTorch.
+Implementation of *TediGAN: Text-Guided Diverse Face Image Generation and Manipulation* in PyTorch.
 
 ## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM)
 
@@ -12,7 +12,7 @@ Implementation of *TediGAN: Text-Guided Diverse Image Generation and Manipulatio
 <img src="/asserts/teaser.jpg"/>
 </p>
 
-Official repository for the paper W. Xia, Y. Yang, J.-H. Xue, and B. Wu. "Text-Guided Diverse Image Generation and Manipulation". 
+Official repository for the paper W. Xia, Y. Yang, J.-H. Xue, and B. Wu. "Text-Guided Diverse Face Image Generation and Manipulation". 
 
 Contact: weihaox AT outlook.com
 
@@ -83,7 +83,7 @@ The first step is to install CLIP by running the following commands:
 pip install ftfy regex tqdm
 pip install git+https://github.com/openai/CLIP.git
 ```
-The pretrained model will be downloaded automaticly from the OpenAI website ([RN50](https://openaipublic.azureedge.net/clip/models/afeb0e10f9e5a86da6080e35cf09123aca3b358a0c3e3b6c78a7b63bc04b6762/RN50.pt) or [ViT-B/32](https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt)).
+The pretrained model will be downloaded automatically from the OpenAI website ([RN50](https://openaipublic.azureedge.net/clip/models/afeb0e10f9e5a86da6080e35cf09123aca3b358a0c3e3b6c78a7b63bc04b6762/RN50.pt) or [ViT-B/32](https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt)).
 
 The manipulated results can be obtained by simply running:
 
@@ -94,13 +94,15 @@ python invert_v2.py $MODEL_NAME $IMAGE_LIST
 ```
 
 Parameters:
+
 `--loss_weight_clip`: weight for the CLIP loss.
+
 `--description`: a textual description, *e.g.*, he is old.
 
 There is also a text-guided image editing method using CLIP and StyleGAN named [StyleClip](https://github.com/orpatashnik/StyleCLIP). Different edits using StyleClip require different values of this parameter. Compared with theirs, our method is not sensitive to the **clip weight** (cw). 
 
 <p align="center">
-<img src="/asserts/results/clip_results.png"/> 
+<img src="/asserts/results/clip_results.jpg"/> 
 </p>
 
 ### More Results
