@@ -1,12 +1,13 @@
 # <p align=center>`TediGAN`</p>
 
-[![Paper](http://img.shields.io/badge/paper-arxiv.2010.04513-green.svg)](https://arxiv.org/abs/2012.03308)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/made%20with-python-green.svg?style=flat)](https://www.python.org/)
+[![Paper](http://img.shields.io/badge/paper-arxiv.2010.04513-blue.svg)](https://arxiv.org/abs/2012.03308)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/made%20with-python-blue.svg?style=flat)](https://www.python.org/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
 
 Implementation of *TediGAN: Text-Guided Diverse Face Image Generation and Manipulation* in PyTorch.
 
-## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM)
+## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
 
 <p align="center">
 <img src="/asserts/teaser.jpg"/>
@@ -20,7 +21,9 @@ Contact: weihaox AT outlook.com
 
 ## Update
 
-[2021/2/16] adding codes for image editing using StyleGAN and CLIP.
+[2021/2/20] add Colab Demo for image editing using StyleGAN and CLIP.
+
+[2021/2/16] add codes for image editing using StyleGAN and CLIP.
 
 ## TediGAN Framework
 
@@ -68,13 +71,15 @@ Due to the scalability of our framework, there are two general ways that can be 
 
 #### Train the Text Encoder
 
+This step is to learn visual-linguistic similarity, which aims to learn the text-image matching by mapping the image and text into a common embedding space. Compared with the previous methods, the main difference is that they learn the text-image relations by training from scratch on the paired texts and images, while ours forces the text embedding to match an already existing latent space learned from only images.
+
 ``` bash
 python train_vls.py
 ```
 
-#### Using a Pretrained Text Encoder
+### Using a Pretrained Text Encoder
 
-We can also use some powerful pretrained language models, *e.g.*, [CLIP](https://github.com/openai/CLIP), to replace this module. CLIP (Contrastive Language-Image Pre-Training) is a recent a neural network trained on 400 million image and text pairs. 
+We can also use some powerful pretrained language models, *e.g.*, [CLIP](https://github.com/openai/CLIP), to replace the visual-linguistic learning module. CLIP (Contrastive Language-Image Pre-Training) is a recent a neural network trained on 400 million image and text pairs. 
 
 In this case, we have the pretrained image model StyleGAN (or StyleGAN2, StyleGAN2Ada) and the pretrained text encoder CLIP. The inversion process is still necessary. Given the obtained inverted codes of a given image, the desired manipulation or generation result can be simply obtained using the instance-level optimization with an additional CLIP term. 
 
@@ -93,16 +98,22 @@ IMAGE_LIST='examples/test.list'
 python invert_v2.py $MODEL_NAME $IMAGE_LIST
 ```
 
-Parameters:
+Some useful parameters:
 
 `--loss_weight_clip`: weight for the CLIP loss.
 
 `--description`: a textual description, *e.g.*, he is old.
 
-There is also a text-guided image editing method using CLIP and StyleGAN named [StyleClip](https://github.com/orpatashnik/StyleCLIP). Different edits using StyleClip require different values of this parameter. Compared with theirs, our method is not sensitive to the **clip weight** (cw). 
+`--num_iterations`: number of optimization iterations.
 
 <p align="center">
 <img src="/asserts/results/clip_results.jpg"/> 
+</p>
+
+There is also a text-guided image editing method using CLIP and StyleGAN named [StyleClip](https://github.com/orpatashnik/StyleCLIP). Different edits using StyleClip require different values of this parameter. Compared with theirs, our method is not sensitive to the **clip weight** (cw). 
+
+<p align="center">
+<img src="/asserts/results/clip_results_cw.jpg"/> 
 </p>
 
 ### More Results

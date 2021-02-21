@@ -20,9 +20,11 @@ from utils.visualizer import save_image, load_image, resize_image
 def parse_args():
   """Parses arguments."""
   parser = argparse.ArgumentParser()
-  parser.add_argument('model_name', type=str, help='Name of the GAN model.')
-  parser.add_argument('image_list', type=str,
-                      help='List of images to invert.')
+  # parser.add_argument('model_name', type=str, help='Name of the GAN model.')
+  # parser.add_argument('image_list', type=str, help='List of images to invert.')
+  parser.add_argument('--model_name', type=str,
+                      default='styleganinv_ffhq256', help='Name of the GAN model.')
+  parser.add_argument('--image_list', type=str, default='examples/test.list',
   parser.add_argument('-o', '--output_dir', type=str, default='',
                       help='Directory to save the results. If not specified, '
                            '`./results/inversion/${IMAGE_LIST}` '
