@@ -24,15 +24,15 @@ def parse_args():
   # parser.add_argument('image_list', type=str, help='List of images to invert.')
   parser.add_argument('--model_name', type=str,
                       default='styleganinv_ffhq256', help='Name of the GAN model.')
-  parser.add_argument('--image_list', type=str, default='examples/test.list',
+  parser.add_argument('--image_list', type=str, default='examples/test.list', help='List of images to invert.')
   parser.add_argument('-o', '--output_dir', type=str, default='',
                       help='Directory to save the results. If not specified, '
                            '`./results/inversion/${IMAGE_LIST}` '
                            'will be used by default.')
   parser.add_argument('--learning_rate', type=float, default=0.01,
                       help='Learning rate for optimization. (default: 0.01)')
-  parser.add_argument('--num_iterations', type=int, default=100,
-                      help='Number of optimization iterations. (default: 100)')
+  parser.add_argument('--num_iterations', type=int, default=200,
+                      help='Number of optimization iterations. (default: 200)')
   parser.add_argument('--num_results', type=int, default=5,
                       help='Number of intermediate optimization results to '
                            'save for each sample. (default: 5)')
@@ -42,11 +42,10 @@ def parse_args():
   parser.add_argument('--loss_weight_enc', type=float, default=2.0,
                       help='The encoder loss scale for optimization.'
                            '(default: 2.0)')
-  parser.add_argument('--loss_weight_clip', type=float, default=5,
-                      help='The clip for optimization.'
-                           '(default: None)') 
+  parser.add_argument('--loss_weight_clip', type=float, default=2.0,
+                      help='The clip loss for optimization. (default: 2.0)')
   parser.add_argument('--description', type=str, default='he is old',
-                      help='The description. (default: None)')
+                      help='The description.')
   parser.add_argument('--viz_size', type=int, default=256,
                       help='Image size for visualization. (default: 256)')
   parser.add_argument('--gpu_id', type=str, default='0',
