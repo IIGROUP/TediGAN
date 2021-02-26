@@ -141,10 +141,11 @@ There is also a text-guided image editing method using CLIP and StyleGAN named [
 
 ### Publications
 
-Below is a curated list of related publications with codes.
+Below is a curated list of related publications with codes (The full list can be found [here](https://github.com/weihaox/awesome-image-translation/blob/master/content/multi-modal-representation.md#text-to-image)).
 
 #### Text-to-image Generation
 
+- <a name="DALL-E"></a> **[DF-GAN]** Zero-Shot Text-to-Image Generation (**2021**) [[paper](https://arxiv.org/abs/2102.12092)] [[code](https://github.com/openai/DALL-E)] [[blog](https://openai.com/blog/dall-e/)] 
 - <a name="DF-GAN"></a> **[DF-GAN]** Deep Fusion Generative Adversarial Networks for Text-to-Image Synthesis (**2020**) [[paper](https://arxiv.org/pdf/2008.05865)] [[code](https://github.com/tobran/DF-GAN)]
 - <a name="ControlGAN"></a> **[ControlGAN]** Controllable Text-to-Image Generation (**NeurIPS 2019**) [[paper](https://papers.nips.cc/paper/8480-controllable-text-to-image-generation.pdf)] [[code](https://github.com/mrlibw/ControlGAN)]
 - <a name="DM-GAN"></a> **[DM-GAN]** Dynamic Memory Generative Adversarial Networks for Text-to-Image Synthesis (**CVPR 2019**) [[paper](https://arxiv.org/abs/1904.01310)] [[code](https://github.com/MinfengZhu/DM-GAN)]
