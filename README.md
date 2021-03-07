@@ -177,10 +177,10 @@ Below is a curated list of related publications with codes (The full list can be
 If you find our work, code or the benchmark helpful for your research, please consider to cite:
 
 ```bibtex
-@article{xia2020tedigan,
+@inproceedings{xia2020tedigan,
   title={TediGAN: Text-Guided Diverse Face Image Generation and Manipulation},
   author={Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao and Wu, Baoyuan},
-  journal={arXiv preprint arXiv: 2012.03308},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   year={2020}
 }
 ```
