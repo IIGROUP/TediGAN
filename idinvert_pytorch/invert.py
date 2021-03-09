@@ -68,7 +68,7 @@ def main():
 
   inverter = StyleGANInverter(
       args.model_name,
-      mode='gen',
+      mode=args.mode,
       learning_rate=args.learning_rate,
       iteration=args.num_iterations,
       reconstruction_loss_weight=1.0,
