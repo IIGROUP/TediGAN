@@ -24,6 +24,10 @@ def parse_args():
   # parser.add_argument('image_list', type=str, help='List of images to invert.')
   parser.add_argument('--model_name', type=str,
                       default='styleganinv_ffhq256', help='Name of the GAN model.')
+  parser.add_argument('--mode', type=str,
+                      default='man', help='Mode (gen for generation, man for manipulation).')
+  parser.add_argument('--description', type=str, default='he is old',
+                      help='The description.')
   parser.add_argument('--image_list', type=str, default='examples/test.list', help='List of images to invert.')
   parser.add_argument('-o', '--output_dir', type=str, default='',
                       help='Directory to save the results. If not specified, '
@@ -42,10 +46,8 @@ def parse_args():
   parser.add_argument('--loss_weight_enc', type=float, default=2.0,
                       help='The encoder loss scale for optimization.'
                            '(default: 2.0)')
-  parser.add_argument('--loss_weight_clip', type=float, default=2.0,
+  parser.add_argument('--loss_weight_clip', type=float, default=1,
                       help='The clip loss for optimization. (default: 2.0)')
-  parser.add_argument('--description', type=str, default='he is old',
-                      help='The description.')
   parser.add_argument('--viz_size', type=int, default=256,
                       help='Image size for visualization. (default: 256)')
   parser.add_argument('--gpu_id', type=str, default='0',
@@ -66,6 +68,7 @@ def main():
 
   inverter = StyleGANInverter(
       args.model_name,
+      mode='gen',
       learning_rate=args.learning_rate,
       iteration=args.num_iterations,
       reconstruction_loss_weight=1.0,
@@ -105,7 +108,6 @@ def main():
     latent_codes.append(code)
 
     np.save(f'{output_dir}/{image_name}.npy', code)
-    print(np.shape(code))
 
     save_image(f'{output_dir}/{image_name}_ori.png', image)
     save_image(f'{output_dir}/{image_name}_enc.png', viz_results[1])

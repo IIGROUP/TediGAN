@@ -54,6 +54,7 @@ class StyleGANInverter(object):
 
   def __init__(self,
                model_name,
+               mode='man',
                learning_rate=1e-2,
                iteration=100,
                reconstruction_loss_weight=1.0,
@@ -87,6 +88,7 @@ class StyleGANInverter(object):
         self.text_inputs = torch.cat([clip.tokenize(description)]).cuda()
         self.clip_loss = CLIPLoss()
 
+    self.mode = mode
     self.logger = logger
     self.model_name = model_name
     self.gan_type = 'stylegan'
@@ -178,12 +180,21 @@ class StyleGANInverter(object):
         are from the optimization process every `self.iteration // num_viz`
         steps.
     """
-    x = image[np.newaxis]
-    x = self.G.to_tensor(x.astype(np.float32))
-    x.requires_grad = False
-    init_z = self.get_init_code(image)
-    z = torch.Tensor(init_z).to(self.run_device)
-    z.requires_grad = True
+    if self.mode == 'man':
+      x = image[np.newaxis]
+      x = self.G.to_tensor(x.astype(np.float32))
+      x.requires_grad = False
+      init_z = self.get_init_code(image)
+      z = torch.Tensor(init_z).to(self.run_device)
+      z.requires_grad = True
+    else:
+      init_z = self.G.sample(1, latent_space_type='wp',
+                             z_space_dim=512, num_layers=14)
+      init_z = self.G.preprocess(init_z, latent_space_type='wp')
+      z = torch.Tensor(init_z).to(self.run_device)
+      z.requires_grad = True
+      x = self.G._synthesize(init_z, latent_space_type='wp')['image']
+      x = torch.Tensor(x).to(self.run_device)
 
     optimizer = torch.optim.Adam([z], lr=self.learning_rate)
 

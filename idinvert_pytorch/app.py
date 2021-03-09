@@ -1,12 +1,3 @@
-# python 3.6
-"""Inverts given images to latent codes with In-Domain GAN Inversion.
-
-Basically, for a particular image (real or synthesized), this script first
-employs the domain-guided encoder to produce a initial point in the latent
-space and then performs domain-regularized optimization to refine the latent
-code.
-"""
-
 import os
 import argparse
 from tqdm import tqdm
@@ -25,7 +16,7 @@ st.title("Text-Guided Editing of Images")
 
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
-# mode = st.selectbox('Mode', ('generation', 'manipulation'))
+mode = st.selectbox('Mode', ('gen', 'man'))
 
 description = st.text_input('Description', 'she is young')
 
@@ -54,7 +45,9 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 def main():
   """Main function."""
 
-  inverter = StyleGANInverter(model_name, learning_rate=ini_lr,
+  inverter = StyleGANInverter(model_name, 
+      mode=mode,
+      learning_rate=ini_lr,
       iteration=step,
       reconstruction_loss_weight=lambda_l2,
       perceptual_loss_weight=lambda_feat,
@@ -75,8 +68,12 @@ def main():
 
     image = resize_image(np.array(image), (image_size, image_size))
     _, viz_results = inverter.easy_invert(image, 1)
+    if mode=='man':
+      final_result = np.hstack([image, viz_results[-1]])
+    else:
+      final_result = np.hstack([viz_results[1], viz_results[-1]])
 
-    final_result = np.hstack([image, viz_results[-1]])
+
     # return final_result
     with st.beta_container():
         st.image(final_result, use_column_width=True)
