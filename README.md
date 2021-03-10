@@ -71,7 +71,7 @@ Due to the scalability of our framework, there are two general ways that can be 
 
 #### Train the Text Encoder
 
-This step is to learn visual-linguistic similarity, which aims to learn the text-image matching by mapping the image and text into a common embedding space. Compared with the previous methods, the main difference is that they learn the text-image relations by training from scratch on the paired texts and images, while ours forces the text embedding to match an already existing latent space learned from only images.
+This step is to learn visual-linguistic similarity, which aims to learn the text-image matching by mapping the image and text into a common embedding space. Compared with the previous methods, the main difference is that they learn the text-image relations by training from scratch on the paired texts and images, while ours forces the text embedding to match an already existing latent space learned from only images (Codes are not uploaded yet).
 
 ``` bash
 python train_vls.py
@@ -90,21 +90,28 @@ pip install git+https://github.com/openai/CLIP.git
 ```
 The pretrained model will be downloaded automatically from the OpenAI website ([RN50](https://openaipublic.azureedge.net/clip/models/afeb0e10f9e5a86da6080e35cf09123aca3b358a0c3e3b6c78a7b63bc04b6762/RN50.pt) or [ViT-B/32](https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt)).
 
-The manipulated results can be obtained by simply running:
+The manipulated or generated results can be obtained by simply running:
 
 ```bash
-MODEL_NAME='styleganinv_ffhq256'
-IMAGE_LIST='examples/test.list'
-python invert_v2.py $MODEL_NAME $IMAGE_LIST
+python invert.py --mode='man' --image_path='examples/142.jpg' --description='he is old'
 ```
 
 Some useful parameters:
 
-`--loss_weight_clip`: weight for the CLIP loss.
+`--mode`: `man` for manipulation, `gen` for generation.
 
 `--description`: a textual description, *e.g.*, he is old.
 
+`--image_path`: image path for manipulation.
+
+`--loss_weight_clip`: weight for the CLIP loss.
+
 `--num_iterations`: number of optimization iterations.
+
+or you can try the online demo:
+```bash
+streamlit run app.py
+```
 
 <p align="center">
 <img src="/asserts/results/clip_results.jpg"/> 
