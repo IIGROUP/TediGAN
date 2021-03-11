@@ -65,7 +65,7 @@ Our original method is based on [idinvert](https://github.com/genforce/idinvert_
 
 Due to the scalability of our framework, there are two general ways that can be used to invert a pretrained StyleGAN. 
 
-- Train an image encoder like in [idinvert](https://github.com/genforce/idinvert_pytorch) or other [GAN inversion methods](https://github.com/weihaox/awesome-image-translation/blob/master/awesome-gan-inversion.md) like [pSp](https://github.com/eladrich/pixel2style2pixel) or [e4e](https://github.com/omertov/encoder4editing).
+- Train an image encoder like in [idinvert](https://github.com/genforce/idinvert_pytorch) or other GAN inversion [methods](https://github.com/weihaox/awesome-gan-inversion) like [pSp](https://github.com/eladrich/pixel2style2pixel) or [e4e](https://github.com/omertov/encoder4editing).
 
 - Project images to latent space directly like in [StyleGAN2Ada](https://github.com/NVlabs/stylegan2-ada#projecting-images-to-latent-space).
 
@@ -126,15 +126,15 @@ There is also a text-guided image editing method using CLIP and StyleGAN named [
 ### More Results
 
 <p align="center">
-<img src="/asserts/results/high-res-gene.png"/> 
+<img src="/asserts/results/high-res-gene.jpg"/> 
 <i>a smiling young woman with short blonde hair</i>
 </p>
 <p align="center">
-<img src="/asserts/results/high-res-lab.png"/>
+<img src="/asserts/results/high-res-lab.jpg"/>
 <i>he is young and wears beard</i>
 </p>
 <p align="center">
-<img src="/asserts/results/high-res-skt.png"/> 
+<img src="/asserts/results/high-res-skt.jpg"/> 
 <i>a young woman with long black hair</i>
 </p>
 
