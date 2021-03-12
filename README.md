@@ -96,17 +96,7 @@ The manipulated or generated results can be obtained by simply running:
 python invert.py --mode='man' --image_path='examples/142.jpg' --description='he is old'
 ```
 
-Some useful parameters:
-
-`--mode`: `man` for manipulation, `gen` for generation.
-
-`--description`: a textual description, *e.g.*, he is old.
-
-`--image_path`: image path for manipulation.
-
-`--loss_weight_clip`: weight for the CLIP loss.
-
-`--num_iterations`: number of optimization iterations.
+Some useful parameters: `--mode`: `man` for manipulation, `gen` for generation. `--description`: a textual description, *e.g.*, he is old. `--image_path`: image path for manipulation. `--loss_weight_clip`: weight for the CLIP loss. `--num_iterations`: number of optimization iterations.
 
 or you can try the online demo:
 ```bash
@@ -121,6 +111,19 @@ There is also a text-guided image editing method using CLIP and StyleGAN named [
 
 <p align="center">
 <img src="/asserts/results/clip_results_cw.jpg"/> 
+</p>
+
+
+The diverse and high-resolution results from sketch or label can be obtained by running:
+```bash
+cd ext/
+python inference.py --exp_dir=experiment --checkpoint_path=pretrained_models/{model_name}.pt --data_path=experiment/images/{dir} --latent_mask=14,15,16,17 --couple_outputs
+python demo.py --description='he is old' --mode='man' --step=500 --f_oom=True
+```
+`--latent_mask` is for diverse results. `--f_oom` can be set as True if you got a OOM error. The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
+
+<p align="center">
+<img src="/asserts/results/free-hand-skt.jpg"/> 
 </p>
 
 ### More Results
