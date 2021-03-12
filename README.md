@@ -21,6 +21,8 @@ Contact: weihaox AT outlook.com
 
 ## Update
 
+[2021/3/12] add support for high-resolution and multi-modality.
+
 [2021/2/20] add Colab Demo for image editing using StyleGAN and CLIP.
 
 [2021/2/16] add codes for image editing using StyleGAN and CLIP.
@@ -123,7 +125,7 @@ python demo.py --description='he is old' --mode='man' --step=500 --f_oom=True
 `--latent_mask` is for diverse results. `--f_oom` can be set as True if you got a OOM error. The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
 
 <p align="center">
-<img src="/asserts/results/free-hand-skt.jpg"/> 
+<img src="/asserts/results/free-hand-skt.png"/> 
 </p>
 
 ### More Results
