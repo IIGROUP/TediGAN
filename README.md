@@ -95,52 +95,34 @@ The pretrained model will be downloaded automatically from the OpenAI website ([
 The manipulated or generated results can be obtained by simply running:
 
 ```bash
-python invert.py --mode='man' --image_path='examples/142.jpg' --description='he is old'
+python invert.py --mode='man'               # 'man' for manipulation, 'gen' for generation
+			--image_path='examples/142.jpg' # path of the input image
+			--description='he is old'       # a textual description, e.g., he is old.
+			--loss_weight_clip='1.0'        # weight for the CLIP loss.
+			--num_iterations=200            # number of optimization iterations
 ```
-
-Some useful parameters: `--mode`: `man` for manipulation, `gen` for generation. `--description`: a textual description, *e.g.*, he is old. `--image_path`: image path for manipulation. `--loss_weight_clip`: weight for the CLIP loss. `--num_iterations`: number of optimization iterations.
-
 or you can try the online demo:
 ```bash
 streamlit run app.py
 ```
-
 <p align="center">
 <img src="/asserts/results/clip_results.jpg"/> 
 </p>
 
-There is also a text-guided image editing method using CLIP and StyleGAN named [StyleClip](https://github.com/orpatashnik/StyleCLIP). Different edits using StyleClip require different values of this parameter. Compared with theirs, our method is not sensitive to the **clip weight** (cw). 
-
-<p align="center">
-<img src="/asserts/results/clip_results_cw.jpg"/> 
-</p>
-
-
 The diverse and high-resolution results from sketch or label can be obtained by running:
 ```bash
 cd ext/
-python inference.py --exp_dir=experiment --checkpoint_path=pretrained_models/{model_name}.pt --data_path=experiment/images/{dir} --latent_mask=14,15,16,17 --couple_outputs
-python demo.py --description='he is old' --mode='man' --step=500 --f_oom=True
+python inference.py --exp_dir=experiment                         # path of logs and results
+			--checkpoint_path=pretrained_models/{model_name}.pt  # path of pretrained models
+			--data_path=experiment/images/{dir}                  # path of input images
+			--latent_mask=14,15,16,17                            # layers for noise injection (for diverse results)
+			--couple_outputs        
+python demo.py --description='he is old' --mode='man' --step=500 --f_oom=True # `--f_oom` can be set as True if you got a OOM error. 
 ```
-`--latent_mask` is for diverse results. `--f_oom` can be set as True if you got a OOM error. The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
+The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
 
 <p align="center">
 <img src="/asserts/results/free-hand-skt.png"/> 
-</p>
-
-### More Results
-
-<p align="center">
-<img src="/asserts/results/high-res-gene.jpg"/> 
-<i>a smiling young woman with short blonde hair</i>
-</p>
-<p align="center">
-<img src="/asserts/results/high-res-lab.jpg"/>
-<i>he is young and wears beard</i>
-</p>
-<p align="center">
-<img src="/asserts/results/high-res-skt.jpg"/> 
-<i>a young woman with long black hair</i>
 </p>
 
 ## Text-to-image Benchmark
@@ -157,7 +139,7 @@ Below is a curated list of related publications with codes (The full list can be
 
 #### Text-to-image Generation
 
-- <a name="DALL-E"></a> **[DF-GAN]** Zero-Shot Text-to-Image Generation (**2021**) [[paper](https://arxiv.org/abs/2102.12092)] [[code](https://github.com/openai/DALL-E)] [[blog](https://openai.com/blog/dall-e/)] 
+- <a name="DALL-E"></a> **[DALL-E]** Zero-Shot Text-to-Image Generation (**2021**) [[paper](https://arxiv.org/abs/2102.12092)] [[code](https://github.com/lucidrains/DALLE-pytorch)] [[dVAE](https://github.com/openai/DALL-E)] [[blog](https://openai.com/blog/dall-e/)]
 - <a name="DF-GAN"></a> **[DF-GAN]** Deep Fusion Generative Adversarial Networks for Text-to-Image Synthesis (**2020**) [[paper](https://arxiv.org/pdf/2008.05865)] [[code](https://github.com/tobran/DF-GAN)]
 - <a name="ControlGAN"></a> **[ControlGAN]** Controllable Text-to-Image Generation (**NeurIPS 2019**) [[paper](https://papers.nips.cc/paper/8480-controllable-text-to-image-generation.pdf)] [[code](https://github.com/mrlibw/ControlGAN)]
 - <a name="DM-GAN"></a> **[DM-GAN]** Dynamic Memory Generative Adversarial Networks for Text-to-Image Synthesis (**CVPR 2019**) [[paper](https://arxiv.org/abs/1904.01310)] [[code](https://github.com/MinfengZhu/DM-GAN)]
@@ -184,9 +166,12 @@ Below is a curated list of related publications with codes (The full list can be
 - Inception-Score ([[paper](https://arxiv.org/abs/1606.03498)] [[code](https://github.com/hanzhanggit/StackGAN-inception-model)])
 - LIPIPS ([[paper](https://arxiv.org/abs/1801.03924)] [[code](https://www.github.com/richzhang/PerceptualSimilarity)])
 
+## Acknowledgments
+The GAN inversion codes borrow heavily from [idinvert](https://github.com/genforce/idinvert_pytorch) and [pSp](https://github.com/eladrich/pixel2style2pixel). The StyleGAN implementation is from [genforce](https://github.com/genforce/genforce) and StyleGAN2 from [Kim Seonghyeon](https://github.com/rosinality/stylegan2-pytorch/).
+
 ## Citation
 
-If you find our work, code or the benchmark helpful for your research, please consider to cite:
+If you find our work, code, or the benchmark helpful for your research, please consider to cite:
 
 ```bibtex
 @inproceedings{xia2020tedigan,
@@ -196,6 +181,3 @@ If you find our work, code or the benchmark helpful for your research, please co
   year={2020}
 }
 ```
-## Acknowledgments
-
-Code borrows heavily from [idinvert](https://github.com/genforce/idinvert_pytorch) and [genforce](https://github.com/genforce/genforce).
