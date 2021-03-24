@@ -105,22 +105,23 @@ or you can try the online demo:
 ```bash
 streamlit run app.py
 ```
-<p align="center">
-<img src="/asserts/results/clip_results.jpg"/> 
-</p>
 
 The diverse and high-resolution results from sketch or label can be obtained by running:
 ```bash
 cd ext/
-python inference.py --exp_dir=experiment                 # path of logs and results
+python inference.py 
+	--exp_dir=experiment                                 # path of logs and results
 	--checkpoint_path=pretrained_models/{model_name}.pt  # path of pretrained models
 	--data_path=experiment/images/{dir}                  # path of input images
-	--couple_outputs        
-python demo.py --description='he is old' --mode='man' 
-	--step=500 --loss_clip_weight=500
-	--f_oom=True # `--f_oom` can be set as True if you got a OOM error. 
+python demo.py --description='he is old' 
+	--mode='man' --f_oom=False                           # set as True if OOM error.
+	--step=500   --loss_clip_weight=200                                         
 ```
 The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
+
+<p align="center">
+<img src="/asserts/results/man_clip.jpg"/> 
+</p>
 
 <p align="center">
 <img src="/asserts/results/free-hand-skt.png"/> 
