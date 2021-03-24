@@ -96,10 +96,10 @@ The manipulated or generated results can be obtained by simply running:
 
 ```bash
 python invert.py --mode='man'               # 'man' for manipulation, 'gen' for generation
-			--image_path='examples/142.jpg' # path of the input image
-			--description='he is old'       # a textual description, e.g., he is old.
-			--loss_weight_clip='1.0'        # weight for the CLIP loss.
-			--num_iterations=200            # number of optimization iterations
+	--image_path='examples/142.jpg' # path of the input image
+	--description='he is old'       # a textual description, e.g., he is old.
+	--loss_weight_clip='1.0'        # weight for the CLIP loss.
+	--num_iterations=200            # number of optimization iterations
 ```
 or you can try the online demo:
 ```bash
@@ -112,12 +112,13 @@ streamlit run app.py
 The diverse and high-resolution results from sketch or label can be obtained by running:
 ```bash
 cd ext/
-python inference.py --exp_dir=experiment                         # path of logs and results
-			--checkpoint_path=pretrained_models/{model_name}.pt  # path of pretrained models
-			--data_path=experiment/images/{dir}                  # path of input images
-			--latent_mask=14,15,16,17                            # layers for noise injection (for diverse results)
-			--couple_outputs        
-python demo.py --description='he is old' --mode='man' --step=500 --f_oom=True # `--f_oom` can be set as True if you got a OOM error. 
+python inference.py --exp_dir=experiment                 # path of logs and results
+	--checkpoint_path=pretrained_models/{model_name}.pt  # path of pretrained models
+	--data_path=experiment/images/{dir}                  # path of input images
+	--couple_outputs        
+python demo.py --description='he is old' --mode='man' 
+	--step=500 --loss_clip_weight=500
+	--f_oom=True # `--f_oom` can be set as True if you got a OOM error. 
 ```
 The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
 
