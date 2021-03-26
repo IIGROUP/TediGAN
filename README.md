@@ -7,7 +7,7 @@
 
 Implementation of *TediGAN: Text-Guided Diverse Face Image Generation and Manipulation* in PyTorch.
 
-## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
+## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb) | [Demo](https://share.streamlit.io/iigroup/tedigan/main/base/streamlit_app.py)
 
 <p align="center">
 <img src="/asserts/teaser.jpg"/>
@@ -103,7 +103,7 @@ python invert.py --mode='man'               # 'man' for manipulation, 'gen' for 
 ```
 or you can try the online demo:
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 The diverse and high-resolution results from sketch or label can be obtained by running:
