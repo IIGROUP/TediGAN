@@ -7,7 +7,7 @@
 
 Implementation of *TediGAN: Text-Guided Diverse Face Image Generation and Manipulation* in PyTorch.
 
-## [Preprint](https://arxiv.org/abs/2012.03308) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb) | [Demo](https://share.streamlit.io/iigroup/tedigan/main/base/streamlit_app.py)
+## [Preprint](https://arxiv.org/abs/2012.03308) | [Extended Version](http://arxiv.org/abs/2104.08910) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb) | [Demo](https://share.streamlit.io/iigroup/tedigan/main/base/streamlit_app.py)
 
 <p align="center">
 <img src="/asserts/teaser.jpg"/>
@@ -15,11 +15,13 @@ Implementation of *TediGAN: Text-Guided Diverse Face Image Generation and Manipu
 
 Official repository for the paper W. Xia, Y. Yang, J.-H. Xue, and B. Wu. "Text-Guided Diverse Face Image Generation and Manipulation". 
 
-Contact: weihaox AT outlook.com
+Contact: weihaox AT outlook dot com
 
 > **NOTE**: The results reported in the paper are about [[faces](https://github.com/weihaox/Multi-Modal-CelebA-HQ)]. We are currently experimenting on other datasets. The codebase includes stylegan training, stylegan inversion, and visual-linguistic learning. The codes will be released when we finish the corresponding training on the new datasets.
 
 ## Update
+
+[2021/4/20] add extended paper.
 
 [2021/3/12] add support for high-resolution and multi-modality.
 
@@ -34,8 +36,6 @@ We have proposed a novel method (abbreviated as *TediGAN*) for image synthesis u
 <p align="center">
 <img src="/asserts/control_mechanism.jpg"/>
 </p>
-
-### Train
 
 #### Train the StyleGAN Generator
 
@@ -59,7 +59,7 @@ WORK_DIR=work_dirs/stylegan_lsun_bird256_train
 
 Or you can directly use a pretrained StyleGAN generator for [ffhq_face_1024](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155082926_link_cuhk_edu_hk/EdfMxgb0hU9BoXwiR3dqYDEBowCSEF1IcsW3n4kwfoZ9OQ?e=VwIV58&download=1), [ffhq_face_256](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155082926_link_cuhk_edu_hk/ES-NAUCC2qdHg87BftvlBiQBVpbJ8-005Q4TNr5KrOxQEw?e=00AnWt&download=1), [cub_bird_256](), or [lsun_bird_256]().
 
-#### Invert the StyleGAN
+#### Invert the StyleGAN Generator
 
 This step is to find the matching latent codes of given images in the latent space of a pretrained GAN model, *e.g.* StyleGAN, StyleGAN2, StyleGAN2Ada (should be the same model in the former step). We ~~will include~~ have included the inverted codes in our [Multi-Modal-CelebA-HQ](https://github.com/weihaox/Multi-Modal-CelebA-HQ) Dataset, which are inverted using [idinvert](https://github.com/genforce/idinvert_pytorch).
 
@@ -73,13 +73,9 @@ Due to the scalability of our framework, there are two general ways that can be 
 
 #### Train the Text Encoder
 
-This step is to learn visual-linguistic similarity, which aims to learn the text-image matching by mapping the image and text into a common embedding space. Compared with the previous methods, the main difference is that they learn the text-image relations by training from scratch on the paired texts and images, while ours forces the text embedding to match an already existing latent space learned from only images (Codes are not uploaded yet).
+This step is to learn visual-linguistic similarity, which aims to learn the text-image matching by mapping the image and text into a common embedding space. Compared with the previous methods, the main difference is that they learn the text-image relations by training from scratch on the paired texts and images, while ours forces the text embedding to match an already existing latent space learned from only images.
 
-``` bash
-python train_vls.py
-```
-
-### Using a Pretrained Text Encoder
+#### Using a Pretrained Text Encoder
 
 We can also use some powerful pretrained language models, *e.g.*, [CLIP](https://github.com/openai/CLIP), to replace the visual-linguistic learning module. CLIP (Contrastive Language-Image Pre-Training) is a recent a neural network trained on 400 million image and text pairs. 
 
@@ -120,11 +116,15 @@ python demo.py --description='he is old'
 The pretrained models can be downloaded [here](https://drive.google.com/drive/folders/1-EywdirN_d_DvYWQYe9aKODKj-y30zMM?usp=sharing). 
 
 <p align="center">
-<img src="/asserts/results/man_clip.jpg"/> 
+<img src="/asserts/results/open_gen.jpg"/> 
 </p>
 
 <p align="center">
 <img src="/asserts/results/free-hand-skt.png"/> 
+</p>
+
+<p align="center">
+<img src="/asserts/results/open_man.jpg"/> 
 </p>
 
 ## Text-to-image Benchmark
@@ -180,6 +180,13 @@ If you find our work, code, or the benchmark helpful for your research, please c
   title={TediGAN: Text-Guided Diverse Face Image Generation and Manipulation},
   author={Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao and Wu, Baoyuan},
   booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2021}
+}
+
+@article{xia2021open,
+  title={Towards Open-World Text-Guided Face Image Generation and Manipulation},
+  author={Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao and Wu, Baoyuan},
+  journal={arxiv preprint arxiv: 2104.08910},
   year={2021}
 }
 ```
