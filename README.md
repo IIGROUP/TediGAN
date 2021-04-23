@@ -5,19 +5,15 @@
 [![Python](https://img.shields.io/badge/made%20with-python-blue.svg?style=flat)](https://www.python.org/)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
 
-Implementation of *TediGAN: Text-Guided Diverse Face Image Generation and Manipulation* in PyTorch.
-
-## [Preprint](https://arxiv.org/abs/2012.03308) | [Extended Version](http://arxiv.org/abs/2104.08910) | [Project](https://xiaweihao.com/projects/tedigan/) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb) | [Demo](https://share.streamlit.io/iigroup/tedigan/main/base/streamlit_app.py)
+## [Preprint](https://arxiv.org/abs/2012.03308) | [Extended Version](http://arxiv.org/abs/2104.08910) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
 
 <p align="center">
 <img src="/asserts/teaser.jpg"/>
 </p>
 
-Official repository for the paper W. Xia, Y. Yang, J.-H. Xue, and B. Wu. "Text-Guided Diverse Face Image Generation and Manipulation". 
+Implementation for the paper W. Xia, Y. Yang, J.-H. Xue, and B. Wu. *TediGAN: Text-Guided Diverse Face Image Generation and Manipulation* and *Towards Open-World Text-Guided Face Image Generation and Manipulation* in PyTorch.
 
 Contact: weihaox AT outlook dot com
-
-> **NOTE**: The results reported in the paper are about [[faces](https://github.com/weihaox/Multi-Modal-CelebA-HQ)]. We are currently experimenting on other datasets. The codebase includes stylegan training, stylegan inversion, and visual-linguistic learning. The codes will be released when we finish the corresponding training on the new datasets.
 
 ## Update
 

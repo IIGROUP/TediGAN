@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 from utils.common import CLIPLoss
 from models.stylegan2.model import Generator
-from idinvert_pytorch.models.perceptual_model import PerceptualModel
+from base.models.perceptual_model import PerceptualModel
 import clip
 
 def parse_args():
