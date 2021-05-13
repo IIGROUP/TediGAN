@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Mark the Jupyter notebook files as documentation and they'll be excluded from language statistics
+.ipynb linguist-documentation
