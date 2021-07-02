@@ -1,6 +1,4 @@
 import os
-import argparse
-from tqdm import tqdm
 import numpy as np
 from PIL import Image
 import streamlit as st
@@ -8,9 +6,7 @@ import torch
 import clip
 
 from utils.inverter import StyleGANInverter
-from utils.logger import setup_logger
-from utils.visualizer import HtmlPageVisualizer
-from utils.visualizer import save_image, load_image, resize_image
+from utils.visualizer import resize_image
 
 st.title("Text-Guided Editing of Images")
 

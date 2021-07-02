@@ -3,12 +3,8 @@
 
 import os
 import argparse
-from tqdm import tqdm
-import numpy as np
 
 from utils.inverter import StyleGANInverter
-from utils.logger import setup_logger
-from utils.visualizer import HtmlPageVisualizer
 from utils.visualizer import save_image, load_image, resize_image
 
 def parse_args():
@@ -38,7 +34,7 @@ def parse_args():
   parser.add_argument('--loss_weight_enc', type=float, default=2.0,
                       help='The encoder loss scale for optimization.'
                            '(default: 2.0)')
-  parser.add_argument('--loss_weight_clip', type=float, default=1,
+  parser.add_argument('--loss_weight_clip', type=float, default=2.0,
                       help='The clip loss for optimization. (default: 2.0)')
   parser.add_argument('--gpu_id', type=str, default='0',
                       help='Which GPU(s) to use. (default: `0`)')
@@ -75,6 +71,7 @@ def main():
     image_name = os.path.splitext(os.path.basename(args.image_path))[0]
   else:
     image_name = 'gen'
+  save_image(f'{output_dir}/{image_name}_ori.png', viz_results[0])
   save_image(f'{output_dir}/{image_name}_enc.png', viz_results[1])
   save_image(f'{output_dir}/{image_name}_inv.png', viz_results[-1])
   print(f'save {image_name} in {output_dir}')
