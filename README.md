@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/made%20with-python-blue.svg?style=flat)](https://www.python.org/)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
 
-## [Preprint](https://arxiv.org/abs/2012.03308) | [Extended Version](http://arxiv.org/abs/2104.08910) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb)
+## [Preprint](https://arxiv.org/abs/2012.03308) | [Extended Version](http://arxiv.org/abs/2104.08910) | [Dataset](https://github.com/weihaox/Multi-Modal-CelebA-HQ) | [Video](https://youtu.be/L8Na2f5viAM) | [Colab](http://colab.research.google.com/github/weihaox/TediGAN/blob/main/playground.ipynb) | [Replicate](https://replicate.ai/iigroup/tedigan)
 
 <p align="center">
 <img src="/asserts/teaser.jpg"/>
