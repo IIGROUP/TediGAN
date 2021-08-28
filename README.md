@@ -17,6 +17,8 @@ Contact: weihaox AT outlook dot com
 
 ## Update
 
+[2021/8/28] add an [online demo](https://replicate.ai/weihaox/tedigan) implemented by @[bfirsh](https://github.com/bfirsh). This demo uses an open source tool called [Cog](https://github.com/replicate/cog).
+
 [2021/4/20] add extended paper.
 
 [2021/3/12] add support for high-resolution and multi-modality.
