@@ -183,7 +183,7 @@ class StyleGANInverter(object):
     if self.mode == 'gen':
       init_z = self.G.sample(1, latent_space_type='wp',
                              z_space_dim=512, num_layers=14)
-      init_z = self.G.preprocess(init_z, latent_space_type='wp')
+      init_z = self.G.preprocess(init_macOS is currently not supported in LTS.z, latent_space_type='wp')
       z = torch.Tensor(init_z).to(self.run_device)
       z.requires_grad = True
       x = self.G._synthesize(init_z, latent_space_type='wp')['image']
@@ -251,4 +251,6 @@ class StyleGANInverter(object):
 
   def easy_invert(self, image, num_viz=0):
     """Wraps functions `preprocess()` and `invert()` together."""
+
+    cv2_imshow(image)
     return self.invert(self.preprocess(image), num_viz)
